@@ -11,5 +11,5 @@ class GetAllImages(object):
 		"""
 		images = Picture.objects.all()
 		serializer = PictureSerializer(images, many=True)
-		print(serializer.data)
+		
 		return serializer.data
