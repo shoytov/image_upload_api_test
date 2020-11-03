@@ -6,10 +6,23 @@
         <script src="{% static 'js/functions.js' %}"></script>
     </head>
     <body>
-        <form id="images_upload_form" method="post" action="/api-v1.0/images" name="images_upload_form" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Загрузить">
-        </form>
+        <div id="form_div">
+            <form id="images_upload_form" method="post" action="/api-v1.0/images" name="images_upload_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Загрузить">
+            </form>
+            <progress id="progressbar" value="0" max="100"></progress>
+        </div>
+
+        <h2>Изображения</h2>
+        <div id="imageset">
+            {% for image in images %}
+                <span>
+                    <a href="{{ image.img.url }}"><img src="{{ image.thumbnail.url }}"></a>
+                    <a href="javascript:delete_image({{ image.id }})">X</a>
+                </span>
+            {% endfor %}
+        </div>
     </body>
 </html>

@@ -8,4 +8,4 @@ class PictureSerializer(serializers.ModelSerializer):
 	"""
 	class Meta:
 		model = Picture
-		fields = ['img', 'width', 'height', 'extension', 'thumbnail', 'uploaded_at']
+		fields = ['id', 'img', 'width', 'height', 'extension', 'thumbnail', 'uploaded_at']
