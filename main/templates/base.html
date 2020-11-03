@@ -1,6 +1,13 @@
+{% load staticfiles %}
+
 <html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <script src="{% static 'js/functions.js' %}"></script>
+    </head>
     <body>
-        <form id="images_upload_form" name="images_upload_form" enctype="multipart/form-data">
+        <form id="images_upload_form" method="post" action="/api-v1.0/images" name="images_upload_form" enctype="multipart/form-data">
+            {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Загрузить">
         </form>

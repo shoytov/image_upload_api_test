@@ -4,9 +4,10 @@ coreapi==2.3.3
 coreschema==0.0.4
 da-vinci==0.3.0
 Django==2.0
+django-cleanup==5.1.0
 django-rest-swagger==2.2.0
-django-thumbnails==0.3.2
 djangorestframework==3.9.2
+easy-thumbnails==2.7
 idna==2.10
 itypes==1.2.0
 Jinja2==2.11.2

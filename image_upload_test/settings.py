@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework_swagger',
-    'thumbnails',
+    'django_cleanup',
     
     'main.apps.MainConfig',
     'api'
@@ -143,37 +143,7 @@ REST_FRAMEWORK = {
     )
 }
 
-
-THUMBNAILS = {
-    'METADATA': {
-        'PREFIX': 'thumbs',
-        'BACKEND': 'thumbnails.backends.metadata.RedisBackend',
-        'db': 1,
-        'port': 6379,
-        'host': 'localhost',
-    },
-    'STORAGE': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
-    },
-    'SIZES': {
-        'small': {
-            'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 50, 'height': 50},
-                {'PATH': 'thumbnails.processors.crop', 'width': 80, 'height': 80}
-            ],
-            'POST_PROCESSORS': [
-                {
-                    'processor': 'thumbnails.post_processors.optimize',
-                    'png_command': 'optipng -force -o7 "%(filename)s"',
-                    'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
-                },
-            ],
-        },
-        'large': {
-            'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 100, 'height': 100},
-                {'PATH': 'thumbnails.processors.flip', 'direction': 'horizontal'}
-            ],
-        }
-    }
-}
+# thumbnails settings
+WIDTH = 200
+THUMBNAIL_DIR_NAME = 'thumbnail'
+THUMBNAIL_ROOT = os.path.join(MEDIA_ROOT, THUMBNAIL_DIR_NAME)
